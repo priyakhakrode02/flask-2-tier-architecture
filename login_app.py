@@ -5,11 +5,10 @@ app =  Flask(__name__)
 
 #configure MySQL
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'priyaDevOps'
-app.config['MYSQL_PASSWORD'] = 'root'
+app.config['MYSQL_USER'] = '***********'
+app.config['MYSQL_PASSWORD'] = '****'
 app.config['MYSQL_DB'] = 'login'
 
-#mysql = MySQL(app)
 #initialize PyMySQL connection
 conn = pymysql.connect(
     host=app.config['MYSQL_HOST'],
