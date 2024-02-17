@@ -25,10 +25,6 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
@@ -36,3 +32,18 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
   
+  build-and-push-docker-image-to-dockerhub: 
+     runs-on: ubuntu-latest
+     steps:
+     - name: login to Docker Hub
+       uses: docker/login-action@v3.0.0
+       with:
+         username: ${{secrets.DockerUsername}}
+         password: ${{secrets.DockerPassword}}
+
+     - name: Build and Push docker Image
+       uses: docker/build-push-action@v5.1.0
+       with:
+         push: True
+         tags: engineerwithspecs02/Flask-login-app:latest
+ 
