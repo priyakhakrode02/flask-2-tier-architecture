@@ -8,7 +8,6 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
 jobs:
   build:
 
@@ -33,17 +32,17 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
   
   build-and-push-docker-image-to-dockerhub: 
-     runs-on: ubuntu-latest
-     steps:
-     - name: login to Docker Hub
-       uses: docker/login-action@v3.0.0
-       with:
-         username: ${{secrets.DockerUsername}}
-         password: ${{secrets.DockerPassword}}
+      runs-on: ubuntu-latest
+      steps:
+        - name: login to Docker Hub
+          uses: docker/login-action@v3.0.0
+          with:
+             username: ${{secrets.DockerUsername}}
+             password: ${{secrets.DockerPassword}}
 
-     - name: Build and Push docker Image
-       uses: docker/build-push-action@v5.1.0
-       with:
-         push: True
-         tags: engineerwithspecs02/Flask-login-app:latest
+        - name: Build and Push docker Image
+          uses: docker/build-push-action@v5.1.0
+          with:
+             push: True
+             tags: engineerwithspecs02/Flask-login-app:latest
  
