@@ -49,5 +49,5 @@ jobs:
       uses: docker/build-push-action@v5.1.0
       with:
          push: true
-         tags: engineerwithspecs02/Flask-login-app:latest
+         tags: engineerwithspecs02/flask-login-app:latest
  
